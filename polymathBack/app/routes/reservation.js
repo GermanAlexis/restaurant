@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
+const { validateCampus } = require('../helpers/field-valid');
+
 const {
   getReservation,
   createReservation,
@@ -13,8 +15,8 @@ router.get('/', getReservation);
 router.post(
   '/:id',
   [
-    check('name_medic', 'el nombre es obligatorio').not().isEmpty(),
-    check('hospital', 'el id del Hospital debe ser valido').isMongoId(),
+    check('date_reservation', 'la fecha de debe ser valida').isDate(),
+    validateCampus
   ],
   createReservation
 );
