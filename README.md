@@ -23,7 +23,7 @@ It lists and gives instructions on how to install the applications so that the s
 1. Get a free API Key at [http://147.182.173.20:3001]
 2. Clone the repo
    ```sh
-  https://github.com/GermanAlexis/restaurant.git
+   https://github.com/GermanAlexis/restaurant.git
    ```
 3. Install NPM packages
    ```sh
