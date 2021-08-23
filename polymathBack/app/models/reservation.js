@@ -22,4 +22,4 @@ reservationSchema.method('toJSON', function () {
   return object;
 });
 
-module.exports = model('reservation', reservationSchema);
+module.exports = model('Reservations', reservationSchema);

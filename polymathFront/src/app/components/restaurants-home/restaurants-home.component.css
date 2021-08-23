@@ -10,3 +10,9 @@ mat-card-actions .mat-flat-button{
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+
+  .example-form-field {
+    margin-right: 10px;
+    width: 45%;
+  }

@@ -10,13 +10,16 @@ import { RestaurantsHomeComponent } from './components/restaurants-home/restaura
 import { NavbarComponent } from './shared/navbar/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReservationComponent } from './components/reservation/reservation/reservation.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     RestaurantModalComponent,
     RestaurantsHomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -24,10 +27,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

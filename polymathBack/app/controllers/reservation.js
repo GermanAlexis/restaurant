@@ -7,15 +7,14 @@ const getReservation = async (req, res) => {
 
   try {
     const [reservations, total] = await Promise.all([
-        Reservation.find()
-        .populate('reservation', 'name date_reservation'),
-        Reservation.countDocuments(),
-      ]);
-    
+      Reservation.find().populate('restaurant', 'name description'),
+      Reservation.countDocuments(),
+    ]);
+
       res.json({
         Ok: true,
         msg: 'Todas las reservationes',
-        reservations: reservations ,
+        reservations: reservations,
         total,
       });
   } catch (error) {
@@ -27,30 +26,28 @@ const getReservation = async (req, res) => {
 
 
 const createReservation = async (req, res) => {
-     const restaurant = req.params.id
+    const restaurant = req.params.id
+
     if(!restaurant) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'Restaurant requerido'
-              });
-        
+      return res.status(400).json({
+          ok: false,
+          msg: 'Restaurant requerido'
+        });    
     }
 
   try {
-
     const rest = await Restaurant.findById(restaurant)
     if (!rest){
-        return res.status(404).json({
-            ok: false,
-            msg: 'Restaurant exist'
-          });
+      return res.status(404).json({
+          ok: false,
+          msg: 'Restaurant not exist'
+        });
     }
     
     let { date_reservation } = req.body;
     date_reservation = moment(date_reservation).format('DD-MM-YYYY')
     
-    const countReservation = await Reservation.find({date_reservation} ).count()
-    console.log(date_reservation, countReservation)
+    const countReservation = await Reservation.find({date_reservation}).count()
     
     if(countReservation >= 20){
         return res.status(404).json({
@@ -70,6 +67,7 @@ const createReservation = async (req, res) => {
         date_reservation,
         restaurant
     })
+    resversave.restaurant = restaurant
     const redb = await resversave.save()
 
     res.status(201).json({

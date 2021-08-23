@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ReservationComponent } from 'src/app/components/reservation/reservation/reservation.component';
 import { RestaurantModalComponent } from 'src/app/components/restaurant-modal/restaurant-modal.component';
 import { RestaurantsHomeComponent } from 'src/app/components/restaurants-home/restaurants-home.component';
 
@@ -10,11 +11,12 @@ import { RestaurantsHomeComponent } from 'src/app/components/restaurants-home/re
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  id: string= ''
+  id: string = ''
   constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
+
   openmodalrestaurant() {
     const dialogRef = new MatDialogConfig()
     dialogRef.disableClose = false;

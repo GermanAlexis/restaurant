@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import * as moment from 'moment';
+import { ReservationService } from 'src/app/services/reservation/reservation.service';
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 import { RestaurantModalComponent } from '../restaurant-modal/restaurant-modal.component';
 
@@ -10,8 +12,12 @@ import { RestaurantModalComponent } from '../restaurant-modal/restaurant-modal.c
 })
 export class RestaurantsHomeComponent implements OnInit {
   restaurants: any[] = []
+  resercount: number = 0
+  minDate: Date = new Date
+  date2: Date = new Date
   constructor(public dialog: MatDialog,
-              private serviceRestaurant: RestaurantService
+              private serviceRestaurant: RestaurantService,
+              private serviceReservation: ReservationService
 ) { }
 
   ngOnInit(): void {
@@ -43,12 +49,20 @@ export class RestaurantsHomeComponent implements OnInit {
           refEdit.afterClosed().subscribe((resp) => {
             if(resp) {this.getallRestaurant()}
           })
-          
-          
-      break
-      case 'reservert':
       break
     }
+  }
+
+  createReservation(id: string){
+    if(moment(this.date2).isSameOrAfter(moment())){
+      this.serviceReservation.createReservation(id, this.date2).subscribe((resp: any) => {
+        if(resp) {  
+          this.minDate = new Date
+          this.resercount = resp.resercount }
+      })
+    } else {
+      console.log('error')
+    } 
 
   }
 }

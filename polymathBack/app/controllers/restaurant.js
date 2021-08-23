@@ -1,19 +1,22 @@
 const Restaurant = require('../models/restaurant');
+const Reservation = require('../models/reservation');
+const moment = require('moment')
 
 const getRestaurant = async (req, res) => {
 
   try {
-    const [restaurants, total] = await Promise.all([
-        Restaurant.find()
-        .populate('reservation', 'name date_reservation'),
-        Restaurant.countDocuments(),
+    let date = moment().format('DD-MM-YYYY')
+    const [restaurants, total, totalR] = await Promise.all([
+        Restaurant.find(),
+        Restaurant.countDocuments()
       ]);
-    
+        
+        console.log(totalR)     
       res.json({
         Ok: true,
         msg: 'Todos los restraurantes',
         restaurants: restaurants ,
-        total,
+        total
       });
   } catch (error) {
       console.log(error)
@@ -50,7 +53,6 @@ const createRestuarant = async (req, res) => {
   
   try {
     const restaurantDB = await restaurant.save();
-    console.log(restaurantDB);
     res.status(201).json({
       ok: true,
       msg: 'Restaurante Creado',

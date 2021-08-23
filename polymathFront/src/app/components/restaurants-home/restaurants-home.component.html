@@ -1,17 +1,26 @@
-<app-navbar></app-navbar>
-
       <mat-card class="example-card" *ngFor="let item of restaurants">
       
-          <mat-card-header  matBadge="1" matBadgeOverlap="true">
+          <mat-card-header  [matBadge]="resercount" matBadgeOverlap="true">
               <div mat-card-avatar class="example-header-image"></div>
               <mat-card-title>Restaurante {{item.name}}</mat-card-title>
               <mat-card-subtitle>{{item.city}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
               <p>{{item.description}}</p>
+              
             </mat-card-content>
             <mat-card-actions style="justify-content: center; margin-left: 1%;">
-              <button mat-flat-button color="primary" (click)="getAction('reservert', item.rid)">Reservar</button>
+              <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Fecha a reservar</mat-label>
+                <input matInput [min]="minDate" [matDatepicker]="datepicker" [(ngModel)]="date2">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply (blur)=" createReservation(item.rid)">Reservar</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
               <button mat-flat-button color="accent" (click)="getAction('edit', item.rid)">Editar</button>
               <button mat-flat-button  color="warn" (click)="getAction('delete', item.rid)">Eliminar</button>
             </mat-card-actions>

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, SchemaTypes } = require('mongoose');
 
 const restaurantSchema = Schema({
 
@@ -21,7 +21,11 @@ const restaurantSchema = Schema({
   url_img:{
     type: String,
     required: false
-  }
+  },
+  reservation: {
+    type: SchemaTypes.ObjectId,
+    ref: 'Reservations',
+  },
 },
 {
     timestamps: true,
@@ -34,4 +38,4 @@ restaurantSchema.method('toJSON', function () {
   return object;
 });
 
-module.exports = model('restaurants', restaurantSchema);
+module.exports = model('Restaurants', restaurantSchema);

@@ -1,11 +1,11 @@
 <mat-toolbar color='primary'>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/home" routerLinkActive="active-link">
    <mat-icon>menu</mat-icon>
  </button>
  <span>My App</span>
  <span class="example-spacer"></span>
  <section>
-    <button mat-raised-button color="accent">
+    <button mat-raised-button color="accent" routerLink="/reservation" routerLinkActive="active-link">
       <mat-icon>remove_red_eye</mat-icon> Ver Reservaciones
     </button>
     <button mat-raised-button color="accent" (click)="openmodalrestaurant()">
