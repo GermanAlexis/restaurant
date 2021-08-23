@@ -1,0 +1,15 @@
+<mat-toolbar color='primary'>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>My App</span>
+ <span class="example-spacer"></span>
+ <section>
+    <button mat-raised-button color="accent">
+      <mat-icon>remove_red_eye</mat-icon> Ver Reservaciones
+    </button>
+    <button mat-raised-button color="accent" (click)="openmodalrestaurant()">
+      <mat-icon>add</mat-icon> Crear restaurante
+    </button>
+</section>
+</mat-toolbar>

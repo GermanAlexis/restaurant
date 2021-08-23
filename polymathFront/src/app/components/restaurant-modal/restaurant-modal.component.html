@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Gestion Resstaurante</h2>
+<form [formGroup]="formData" (ngSubmit)="infoRestaurant()">
+<div class="example-container" >
+<mat-dialog-content class="mat-typography">
+  <mat-card class="example-card-dialog">
+    <mat-card-content>
+
+      <h3>Permite cargar los datos del restaurante</h3><br>
+      <mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile
+        [rowspan]="2" 
+        [colspan]="1"
+        >
+        <mat-card-content class="example-card">
+          <br>
+          <mat-form-field appearance="fill" style="width: 95%;">
+           <mat-label>Nombre del restaurante</mat-label>
+           <input matInput placeholder="Digite nombre"  formControlName="name">
+           <mat-icon matSuffix>restaurant</mat-icon>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill" style="width: 75%;">
+            <mat-label>Direccion</mat-label>
+            <input matInput placeholder="EX. Call- Kra"  formControlName="address">
+            <mat-icon matSuffix>place</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="width: 45%;">
+          <mat-label>Cuidad</mat-label>
+          <input matInput placeholder="Cuidad"  formControlName="city">
+          <mat-icon matSuffix>my_location</mat-icon>
+          </mat-form-field>
+
+        </mat-card-content>
+
+          </mat-grid-tile>
+
+        <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="2"
+        [style.background]="'#DDBDF1'"
+        >
+        <mat-card class="example-card">
+          <img mat-card-image [src]="url_img" [alt]="">
+        </mat-card>
+    </mat-grid-tile>
+      </mat-grid-list>
+
+    <mat-form-field appearance="fill" style="width: 95%;">
+      <mat-label>Descripcion del restaurante</mat-label>
+      <textarea matInput placeholder="Ex. 100 Main St" formControlName="description">Describa aqui su restaurante</textarea>
+    </mat-form-field>
+
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color='primary' type="submit" >guardar datos</button>
+</mat-dialog-actions>
+</div>
+</form>

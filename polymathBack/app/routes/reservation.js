@@ -15,7 +15,7 @@ router.get('/', getReservation);
 router.post(
   '/:id',
   [
-    check('date_reservation', 'la fecha de debe ser valida').isDate(),
+    check('date_reservation', 'la fecha de debe ser valida').not().isEmpty(),
     validateCampus
   ],
   createReservation

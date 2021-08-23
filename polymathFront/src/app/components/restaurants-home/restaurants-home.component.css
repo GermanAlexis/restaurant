@@ -1,0 +1,12 @@
+mat-card-actions .mat-flat-button{
+    margin: 0 1px;
+}
+.example-card {
+    max-width: 400px;
+    margin-top: 2%;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

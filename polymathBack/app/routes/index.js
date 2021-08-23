@@ -18,6 +18,6 @@ fs.readdirSync(pathRouter).filter((file) => {
 })
 
 router.get('*', (req, res) => {
-    res.status(404).json({ error: 'Not found'})
+    res.status(404).json({ error: 'pagina no encontrada'})
 })
 module.exports = router

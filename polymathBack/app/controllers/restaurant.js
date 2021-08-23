@@ -26,8 +26,7 @@ const getByIdRestaurant = async (req, res) => {
   try {
     
     const restaurant = await Restaurant.findById(rid)
-    .populate('reservation', 'name')
-      
+      console.log(restaurant)
     res.status(200).json({
     Ok: true,
     msg: 'Restaurante Encontrado',
@@ -45,12 +44,13 @@ const getByIdRestaurant = async (req, res) => {
 
 const createRestuarant = async (req, res) => {
 
-
   const restaurant = new Restaurant({
     ...req.body,
   });
+  
   try {
     const restaurantDB = await restaurant.save();
+    console.log(restaurantDB);
     res.status(201).json({
       ok: true,
       msg: 'Restaurante Creado',
@@ -102,19 +102,19 @@ const deleteRestuarant = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const medic = await Restaurant.findById(id);
+    const restaurant = await Restaurant.findById(id);
 
-    if (!medic) {
+    if (!restaurant) {
       return res.status(404).json({
         ok: false,
-        msg: `No se encontro ningun medico con ese id ${id}`,
+        msg: `No se encontro ningun restaurante con ese id ${id}`,
       });
     }
 
-    const restaurantDelete = await Medic.findByIdAndRemove(id);
+    const restaurantDelete = await Restaurant.findByIdAndRemove(id);
     res.status(200).json({
       ok: true,
-      msg: ' el medico se elimino con exito ',
+      msg: ' el restaurante se elimino con exito ',
       restaurant: restaurantDelete,
     });
   } catch (error) {

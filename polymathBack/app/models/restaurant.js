@@ -20,7 +20,7 @@ const restaurantSchema = Schema({
   },
   url_img:{
     type: String,
-    required: true
+    required: false
   }
 },
 {
