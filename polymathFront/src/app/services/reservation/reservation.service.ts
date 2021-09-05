@@ -16,8 +16,6 @@ export class ReservationService {
 
   createReservation(id: string, date_reservation: Date){
     let date = {date_reservation: date_reservation}
-    console.log(date);
-    
     return this.http.post(`${base_url}/reservation/${id}`, date)
   }
 }

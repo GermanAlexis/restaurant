@@ -34,6 +34,7 @@ export class RestaurantsHomeComponent implements OnInit {
     switch(action){
       case 'delete':
         this.serviceRestaurant.delete(id).subscribe((resp: any) => {
+          console.log(resp)
           if(resp.ok){ this.getallRestaurant() }
         })
         break
@@ -54,7 +55,7 @@ export class RestaurantsHomeComponent implements OnInit {
   }
 
   createReservation(id: string){
-    if(moment(this.date2).isSameOrAfter(moment())){
+    if(moment(this.date2).isAfter(moment())){
       this.serviceReservation.createReservation(id, this.date2).subscribe((resp: any) => {
         if(resp) {  
           this.minDate = new Date

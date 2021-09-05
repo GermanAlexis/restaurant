@@ -114,10 +114,13 @@ const deleteRestuarant = async (req, res) => {
     }
 
     const restaurantDelete = await Restaurant.findByIdAndRemove(id);
+    const reservationDelete = await Reservation.deleteMany({restaurant: id })
+
     res.status(200).json({
       ok: true,
       msg: ' el restaurante se elimino con exito ',
       restaurant: restaurantDelete,
+      reserva: reservationDelete
     });
   } catch (error) {
     console.log(error);
